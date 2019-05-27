@@ -1,12 +1,9 @@
-\chapter{外文资料原文}
-\label{cha:engorg}
-
-\title{The title of the English paper}
+\title{外文资料原文\\The title of the English paper}
 
 \textbf{Abstract:} As one of the most widely used techniques in operations
 research, \emph{ mathematical programming} is defined as a means of maximizing a
 quantity known as \emph{bjective function}, subject to a set of constraints
-represented by equations and inequalities. Some known subtopics of mathematical
+represented by equation*s and inequalities. Some known subtopics of mathematical
 programming are linear programming, nonlinear programming, multiobjective
 programming, goal programming, dynamic programming, and multilevel
 programming$^{[1]}$.
@@ -17,7 +14,7 @@ mathematical programming such that readers gain an understanding of them
 throughout the book$^{[2,3]}$.
 
 
-\section{Single-Objective Programming}
+\section*{Single-Objective Programming}
 The general form of single-objective programming (SOP) is written
 as follows,
 \begin{equation*} % 如果附录中的公式不想让它出现在公式索引中，那就请
@@ -48,9 +45,9 @@ feasible solution.
 \begin{mpdefop}
 A feasible solution $x^*$ is called the optimal
 solution of SOP if and only if
-\begin{equation}
+\begin{equation*}
 f(x^*)\ge f(x)
-\end{equation}
+\end{equation*}
 for any feasible solution $x$.
 \end{mpdefop}
 
@@ -65,20 +62,20 @@ Let $x^*$ be a regular point of the constraints of SOP and assume that all the
 functions $f(x)$ and $g_j(x),j=1,2,\cdots,p$ are differentiable. If $x^*$ is a
 local optimal solution, then there exist Lagrange multipliers
 $\lambda_j,j=1,2,\cdots,p$ such that the following Kuhn-Tucker conditions hold,
-\begin{equation}
+\begin{equation*}
 \label{eq:ktc}
 \left\{\begin{array}{l}
     \nabla f(x^*)-\sum\limits_{j=1}^p\lambda_j\nabla g_j(x^*)=0\\[0.3cm]
     \lambda_jg_j(x^*)=0,\quad j=1,2,\cdots,p\\[0.2cm]
     \lambda_j\ge 0,\quad j=1,2,\cdots,p.
 \end{array}\right.
-\end{equation}
+\end{equation*}
 If all the functions $f(x)$ and $g_j(x),j=1,2,\cdots,p$ are convex and
 differentiable, and the point $x^*$ satisfies the Kuhn-Tucker conditions
 (\ref{eq:ktc}), then it has been proved that the point $x^*$ is a global optimal
 solution of SOP.
 
-\subsection{Linear Programming}
+\subsection*{Linear Programming}
 \label{sec:lp}
 
 If the functions $f(x),g_j(x),j=1,2,\cdots,p$ are all linear, then SOP is called
@@ -118,7 +115,7 @@ selected so as to improve the objective function value. The procedure is
 repeated until no improvement in objective function value can be made. The last
 extreme point is the optimal solution.
 
-\subsection{Nonlinear Programming}
+\subsection*{Nonlinear Programming}
 
 If at least one of the functions $f(x),g_j(x),j=1,2,\cdots,p$ is nonlinear, then
 SOP is called a {\em nonlinear programming}.
@@ -153,7 +150,7 @@ of second derivatives. In fact, there is no superior method for all
 problems. The efficiency of a method is very much dependent upon the objective
 function.
 
-\subsection{Integer Programming}
+\subsection*{Integer Programming}
 
 {\em Integer programming} is a special mathematical programming in which all of
 the variables are assumed to be only integer values. When there are not only
@@ -180,20 +177,18 @@ the {\em branch-and-bound enumeration} developed by Balas (1965) and Dakin
 \item David Salomon. The advanced \TeX book.  New York : Springer, 1995. ISBN:0-387-94556-3
 \end{translationbib}
 
-\chapter{外文资料的调研阅读报告或书面翻译}
-
-\title{英文资料的中文标题}
+\title{外文资料的调研阅读报告或书面翻译\\英文资料的中文标题}
 
 {\heiti 摘要：} 本章为外文资料翻译内容。如果有摘要可以直接写上来，这部分好像没有
 明确的规定。
 
-\section{单目标规划}
+\section*{单目标规划}
 北冥有鱼，其名为鲲。鲲之大，不知其几千里也。化而为鸟，其名为鹏。鹏之背，不知其几
 千里也。怒而飞，其翼若垂天之云。是鸟也，海运则将徙于南冥。南冥者，天池也。
-\begin{equation}\tag*{(123)}
+\begin{equation*}\tag*{(123)}
  p(y|\mathbf{x}) = \frac{p(\mathbf{x},y)}{p(\mathbf{x})}=
 \frac{p(\mathbf{x}|y)p(y)}{p(\mathbf{x})}
-\end{equation}
+\end{equation*}
 
 吾生也有涯，而知也无涯。以有涯随无涯，殆已！已而为知者，殆而已矣！为善无近名，为
 恶无近刑，缘督以为经，可以保身，可以全生，可以养亲，可以尽年。
@@ -231,7 +226,7 @@ the {\em branch-and-bound enumeration} developed by Balas (1965) and Dakin
 文惠君曰：“善哉！吾闻庖丁之言，得养生焉。”
 
 
-\subsection{非线性规划}
+\subsection*{非线性规划}
 孔子与柳下季为友，柳下季之弟名曰盗跖。盗跖从卒九千人，横行天下，侵暴诸侯。穴室枢
 户，驱人牛马，取人妇女。贪得忘亲，不顾父母兄弟，不祭先祖。所过之邑，大国守城，小
 国入保，万民苦之。孔子谓柳下季曰：“夫为人父者，必能诏其子；为人兄者，必能教其弟。
@@ -250,7 +245,7 @@ the {\em branch-and-bound enumeration} developed by Balas (1965) and Dakin
 
 孔子不听，颜回为驭，子贡为右，往见盗跖。
 
-\subsection{整数规划}
+\subsection*{整数规划}
 盗跖乃方休卒徒大山之阳，脍人肝而餔之。孔子下车而前，见谒者曰：“鲁人孔丘，闻将军
 高义，敬再拜谒者。”谒者入通。盗跖闻之大怒，目如明星，发上指冠，曰：“此夫鲁国之
 巧伪人孔丘非邪？为我告之：尔作言造语，妄称文、武，冠枝木之冠，带死牛之胁，多辞缪
@@ -258,6 +253,6 @@ the {\em branch-and-bound enumeration} developed by Balas (1965) and Dakin
 作孝弟，而侥幸于封侯富贵者也。子之罪大极重，疾走归！不然，我将以子肝益昼餔之膳。”
 
 
-\chapter{其它附录}
+\title{其它附录}
 前面两个附录主要是给本科生做例子。其它附录的内容可以放到这里，当然如果你愿意，可
 以把这部分也放到独立的文件中，然后将其 \cs{input} 到主文件中。

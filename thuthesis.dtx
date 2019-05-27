@@ -1463,9 +1463,9 @@
          UprightFont = * Light,
             BoldFont = * Bold,
     ]{Songti SC}
-  \setCJKfamilyfont{zhhei}[BoldFont=* Bold]{Heiti SC}
+  \setCJKfamilyfont{zhhei}[AutoFakeBold]{Heiti SC}
   \setCJKfamilyfont{zhkai}[BoldFont=* Bold]{Kaiti SC}
-  \setCJKfamilyfont{zhli}[BoldFont=* Bold]{LiSu}
+  \setCJKfamilyfont{zhli}[AutoFakeBold]{LiSu}
   \newcommand*{\lishu}{\CJKfamily{zhli}}
   \xeCJKsetwidth{‘’“”}{1em}
 }{}
@@ -1707,6 +1707,7 @@
 % \changes{v2.5}{2006/05/20}{增加 empty 页面样式。}
 % \changes{v4.7}{2012/05/29}{本科页码用小五号字。}
 % \changes{v5.0.0}{2015/12/20}{利用 \pkg{fancyhdr} 设置页眉页脚。}
+% \changes{v5.5.1.BJUT.05}{2019/05/27}{增加附录页眉}
 % 定义三种页眉页脚格式：
 % \begin{itemize}
 % \item \texttt{thu@empty}：页眉页脚都没有
@@ -1722,6 +1723,13 @@
 \fancypagestyle{thu@plain}{%
   \fancyhead{}
   \fancyhead[C]{\lishu \sanhao 北京工业大学毕业设计（论文）}
+  \fancyfoot{}
+  \fancyfoot[C]{\wuhao\thepage}
+  \renewcommand{\headrulewidth}{0.4pt}
+  \renewcommand{\footrulewidth}{0pt}}
+\fancypagestyle{thu@translatehdr}{%
+  \fancyhead{}
+  \fancyhead[C]{\lishu \sanhao 北京工业大学毕业设计（译文）}
   \fancyfoot{}
   \fancyfoot[C]{\wuhao\thepage}
   \renewcommand{\headrulewidth}{0.4pt}
@@ -2135,6 +2143,7 @@
 % \changes{v4.4}{2008/06/04}{调整段前距为 -12bp 而不是原来的 -16bp。}
 % \changes{v5.5.1.BJUT.01}{2019/04/27}{更改章节标题到小二，另外之后微调章节格式都在这里}
 % \changes{v5.5.1.BJUT.02}{2019/04/29}{标题字体加粗且切换为宋体}
+% \changes{v5.5.1.BJUT.04}{2019/05/06}{二级标题字体错误，换为四号}
 % \end{description}
 %    \begin{macrocode}
 \newcommand\thu@chapter@titleformat[1]{%
@@ -2168,7 +2177,7 @@
     afterindent=true,
     beforeskip={\ifthu@bachelor 12bp\else 16bp\fi\@plus 1ex \@minus .2ex},
     afterskip={6bp \@plus .2ex},
-    format={\songti\ifthu@bachelor\xiaosan[1.25]\bfseries\else\banxiaosi[1.538]\fi},
+    format={\songti\ifthu@bachelor\sihao[1.25]\bfseries\else\banxiaosi[1.538]\fi},
     numberformat={\songti\ifthu@bachelor\sihao[1.154]\bfseries\else\banxiaosi[1.538]\fi},
   },
   subsubsection={
@@ -2288,15 +2297,16 @@
 % 汉字符，二级节标题行缩进 2 个汉字符（但示例文件中为 1.5 个汉字符）。本科生指
 % 南中未作明确规定，示例文件中对于一级和二级节标题分别缩进 1 和 1.5 个汉字符。
 % \changes{v5.0.0}{2015/04/28}{修正学位论文中目录里节前缩进(\#103)}
+% \changes{v5.5.1.BJUT.04}{2019/05/06}{根据论文模板更新目录缩进}
 %    \begin{macrocode}
 % \patchcmd{\@dottedtocline}{#4}{\csname thu@toc@font\endcsname #4}{}{}
 \patchcmd{\@dottedtocline}{\hb@xt@\@pnumwidth}{\hbox}{}{}
 \renewcommand*\l@section{%
-  \@dottedtocline{1}{\ccwd}{2.1em}}
+  \@dottedtocline{1}{2\ccwd}{2.1em}}
 \renewcommand*\l@subsection{%
-  \@dottedtocline{2}{\ifthu@bachelor 1.5\ccwd\else 2\ccwd\fi}{3em}}
+  \@dottedtocline{2}{\ifthu@bachelor 4\ccwd\else 2\ccwd\fi}{3em}}
 \renewcommand*\l@subsubsection{%
-  \@dottedtocline{3}{\ifthu@bachelor 2.4em\else 3.5em\fi}{3.8em}}
+  \@dottedtocline{3}{\ifthu@bachelor 6\ccwd\else 3.5em\fi}{3.8em}}
 %    \end{macrocode}
 % \end{macro}
 %
@@ -2522,8 +2532,6 @@
 本人完全了解北京工业大学有关保留、使用学位论文的规定，即：学校有权保留送交论文的
 复印件，允许论文被查阅和借阅；学校可以公布论文的全部或部分内容，可以采用影印、缩
 印或其他复制手段保存论文。
-（保密的论文在解密后应遵守此规定）
-
 \else
 本人完全了解北京工业大学有关保留、使用学位论文的规定，即：
 
@@ -2537,7 +2545,7 @@
 本人保证遵守上述规定。
 \fi}
 \newcommand{\thu@authorizationaddon}{%
-  \ifthu@bachelor(涉密的学位论文在解密后应遵守此规定)\else （保密的论文在解密后应遵守此规定）\fi}
+  \ifthu@bachelor（保密的论文在解密后应遵守此规定）\else （保密的论文在解密后应遵守此规定）\fi}
 \newcommand{\thu@authorsig}{\ifthu@bachelor 签\hskip1em名：\else 作者签名：\fi}
 \newcommand{\thu@teachersig}{导师签名：}
 \newcommand{\thu@frontdate}{%
@@ -2685,7 +2693,7 @@
          \setlength{\extrarowheight}{10pt}
          \begin{tabular}{p{\thu@title@width}@{}l@{\extracolsep{20pt}}l}
              \thu@put@title{\thu@bachelor@title@pre} & \thu@title@sep
-               & \parbox[t]{8cm}{\thu@ctitle\vskip1.5cm}\\
+               & \parbox[t]{7.6cm}{\thu@ctitle\vskip0.7cm}\\
              \thu@put@title{\thu@author@title}     & \thu@title@sep
                & \thu@cauthor \\
              \thu@put@title{\thu@studentno@title}  & \thu@title@sep
@@ -3313,24 +3321,30 @@
 % \label{sec:appendix}
 % \begin{environment}{appendix}
 % 主要给本科做外文翻译用。
+% \changes{v5.5.1.BJUT.05}{2019/05/27}{修改附录以重新编号页码}
 %    \begin{macrocode}
 \let\thu@appendix\appendix
 \renewenvironment{appendix}{%
+  \clearpage
+  \pagestyle{thu@translatehdr}
   \let\title\thu@appendix@title
-  \thu@appendix}{%
+  \thu@appendix
+  \setcounter{page}{1}}{%
   \let\title\@gobble}
 %    \end{macrocode}
 % \end{environment}
 %
 % \begin{macro}{\title}
 % \changes{v5.2.0}{2016/01/11}{增加 \cs{title} 排版翻译标题。}
+% \changes{v5.5.1.BJUT.05}{2019/05/27}{修正翻译标题格式}
 % 本科外文翻译文章的标题，用法：\cs{title}\marg{资料标题}。这个命令只能在附录环
 % 境下使用。
 %    \begin{macrocode}
 \let\title\@gobble
 \newcommand{\thu@appendix@title}[1]{%
   \begin{center}
-    \xiaosi[1.667] #1
+    \heiti
+    \sanhao[1.667] #1
   \end{center}}
 %    \end{macrocode}
 % \end{macro}
